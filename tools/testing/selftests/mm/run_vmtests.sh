@@ -47,6 +47,8 @@ separated by spaces:
 	hmm smoke tests
 - madv_guard
 	test madvise(2) MADV_GUARD_INSTALL and MADV_GUARD_REMOVE options
+- madv_dontneed
+	test madvise(3) MADV_DONTNEED and MADV_FREE, PROCESS_MADV_DONTNEED
 - madv_populate
 	test memadvise(2) MADV_POPULATE_{READ,WRITE} options
 - memfd_secret
@@ -427,6 +429,8 @@ CATEGORY="madv_populate" run_test ./madv_populate
 
 CATEGORY="vma_merge" run_test ./merge
 
+# MADV_FREE and MADV_DONTNEED, PROCESS_MADV_DONTNEED tests
+CATEGORY="madv_dontneed" run_test ./madv_dontneed
 if [ -x ./memfd_secret ]
 then
 (echo 0 > /proc/sys/kernel/yama/ptrace_scope 2>&1) | tap_prefix
